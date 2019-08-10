@@ -20,6 +20,7 @@ for (var i = 0; i < fruits.length; i++) {
 
 $(".run-api").click( function() {
     // alert($(this).attr('data'))
+    $('#giphy-here').empty();
     var frutty = $(this).attr("data");
     var keyLock = 'ogy1PqNtCq4mqXG4hlDpZ1iDVeQJjkJI'
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -43,7 +44,13 @@ $(".run-api").click( function() {
             // var p = $("<p>").text("Rating: " + rating);
 
             var personImage = $("<img>");
-            personImage.attr("src", results[i].images.fixed_height.url);
+
+            // Img attribute and class creation
+            personImage.attr("src", results[i].images.original_still.url);
+            personImage.attr("data-still", results[i].images.original_still.url);
+            personImage.attr("data-inimate", results[i].images.fixed_height.url);
+            personImage.addClass("gif");
+
             console.log(results[i].source);
 
             gifDiv.prepend(personImage);
