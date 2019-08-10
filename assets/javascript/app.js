@@ -7,16 +7,27 @@ var fruits = [
 ]
 console.log(fruits);
 
+$(".btn").click(function () {
+    event.preventDefault();
+    var newFruit = $('.form-control').val();
+    // alert(newFruit);
+    var newButton = $("<button>");
+    newButton.text(newFruit);
+    newButton.attr('data', newFruit);
+    newButton.addClass("run-api")
+    $("#buttons-here").append(newButton);
+})
 
 for (var i = 0; i < fruits.length; i++) {
     console.log(i);
-    var button = $("<button></button>");
+    var button = $("<button>");
     button.text(fruits[i]);
     button.attr('data', fruits[i]);
     button.addClass("run-api")
     $("#buttons-here").append(button);
     
 }
+
 
 $(".run-api").click( function() {
     // alert($(this).attr('data'))
@@ -45,8 +56,8 @@ $(".run-api").click( function() {
             var personImage = $("<img>");
 
             // Img attribute and class creation
-            personImage.attr("src", results[i].images.original_still.url);
-            personImage.attr("data-still", results[i].images.original_still.url);
+            personImage.attr("src", results[i].images.fixed_height_small_still.url);
+            personImage.attr("data-still", results[i].images.fixed_height_small_still.url);
             personImage.attr("data-animate", results[i].images.fixed_height.url);
             personImage.attr("data-state", "still");
             personImage.addClass("gif");
