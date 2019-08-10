@@ -39,9 +39,8 @@ $(".run-api").click( function() {
         for (var i = 0; i < results.length; i++) {
             var gifDiv = $("<div>");
 
-            // var rating = results[i].rating;
-
-            // var p = $("<p>").text("Rating: " + rating);
+            var rating = results[i].rating;
+            var p = $("<p>").text("Rating: " + rating);
 
             var personImage = $("<img>");
 
@@ -56,6 +55,7 @@ $(".run-api").click( function() {
             gifDiv.prepend(personImage);
 
             $("#giphy-here").prepend(gifDiv);
+            $("#giphy-here").prepend(p);
         }
     });
 });
