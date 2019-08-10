@@ -33,5 +33,22 @@ $(".run-api").click( function() {
         // Open up the data key, then open up the 0th, element. Study the keys and how the JSON is structured.
 
         console.log(response);
+        var results = response.data;
+
+        for (var i = 0; i < results.length; i++) {
+            var gifDiv = $("<div>");
+
+            // var rating = results[i].rating;
+
+            // var p = $("<p>").text("Rating: " + rating);
+
+            var personImage = $("<img>");
+            personImage.attr("src", results[i].images.fixed_height.url);
+            console.log(results[i].source);
+
+            gifDiv.prepend(personImage);
+
+            $("#giphy-here").prepend(gifDiv);
+        }
     });
 });
