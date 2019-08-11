@@ -34,6 +34,7 @@ function render () {
         $("#buttons-here").append(button);
     }
     connection();
+    $('#InputFruit').val('');
 }
 
 function connection() {
