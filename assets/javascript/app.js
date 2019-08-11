@@ -41,6 +41,8 @@ function connection() {
         // alert($(this).attr('data'))
         $('#giphy-here').empty();
         console.log('hi');
+        $(".run-api").attr("style", "background: #3CB371")
+        $(this).attr("style", "background: #2E8B57")
         
         var frutty = $(this).attr("data");
         var keyLock = 'ogy1PqNtCq4mqXG4hlDpZ1iDVeQJjkJI'
@@ -59,6 +61,7 @@ function connection() {
     
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
+                gifDiv.addClass("gifContain")
     
                 var rating = results[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
@@ -66,9 +69,9 @@ function connection() {
                 var personImage = $("<img>");
     
                 // Img attribute and class creation
-                personImage.attr("src", results[i].images.fixed_height_small_still.url);
-                personImage.attr("data-still", results[i].images.fixed_height_small_still.url);
-                personImage.attr("data-animate", results[i].images.fixed_height.url);
+                personImage.attr("src", results[i].images.downsized_still.url);
+                personImage.attr("data-still", results[i].images.downsized_still.url);
+                personImage.attr("data-animate", results[i].images.downsized.url);
                 personImage.attr("data-state", "still");
                 personImage.addClass("gif");
     
@@ -77,7 +80,7 @@ function connection() {
                 gifDiv.prepend(personImage);
     
                 $("#giphy-here").prepend(gifDiv);
-                $("#giphy-here").prepend(p);
+                $(gifDiv).prepend(p);
             }
             $(".gif").on("click", function () {
                 // alert('hi');
