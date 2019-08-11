@@ -5,8 +5,24 @@ var fruits = [
     'pineapple',
     'tomato'
 ]
-console.log(fruits);
+// console.log(fruits);
 render();
+
+$(".btn").click(function () {
+    event.preventDefault();
+    var newFruit = $('.form-control').val();
+    fruits.push(newFruit);
+    console.log(fruits);
+    $('#buttons-here').empty();
+    render();
+    // connection();
+    // alert(newFruit);
+    // var newButton = $("<button>");
+    // newButton.text(newFruit);
+    // newButton.attr('data', newFruit);
+    // newButton.addClass("run-api")
+    // $("#buttons-here").append(newButton);
+})
 
 function render () {
     for (var i = 0; i < fruits.length; i++) {
@@ -16,34 +32,20 @@ function render () {
         button.attr('data', fruits[i]);
         button.addClass("run-api")
         $("#buttons-here").append(button);
-        connection();
     }
-}
-
-$(".btn").click(function () {
-    event.preventDefault();
-    var newFruit = $('.form-control').val();
-    fruits.push(newFruit);
-    console.log(fruits);
-    $('#buttons-here').empty();
-    render();
     connection();
-    // alert(newFruit);
-    // var newButton = $("<button>");
-    // newButton.text(newFruit);
-    // newButton.attr('data', newFruit);
-    // newButton.addClass("run-api")
-    // $("#buttons-here").append(newButton);
-})
+}
 
 function connection() {
     $(".run-api").click( function() {
         // alert($(this).attr('data'))
         $('#giphy-here').empty();
+        console.log('hi');
+        
         var frutty = $(this).attr("data");
         var keyLock = 'ogy1PqNtCq4mqXG4hlDpZ1iDVeQJjkJI'
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            frutty + "&api_key=" + keyLock;
+            frutty + "&api_key=" + keyLock + "&limit=10";
     
         $.ajax({
             url: queryURL,
