@@ -1,0 +1,23 @@
+html, body {
+    background: #DCDCDC;
+}
+
+p {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+form {
+    padding: 5px;
+}
+
+.run-api {
+    margin: 5px;
+    background: #3CB371;
+    color: #ffffff;
+}
+
+.btn {
+    background: #3CB371;
+    border: none;    
+}
