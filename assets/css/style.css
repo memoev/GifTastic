@@ -7,6 +7,10 @@ p {
     margin-top: 10px;
 }
 
+img {
+    width: 100%;
+}
+
 form {
     padding: 5px;
 }
