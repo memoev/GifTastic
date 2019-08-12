@@ -1,3 +1,4 @@
+// Array with options to query from API.
 var fruits = [
     'banana',
     'watermellon',
@@ -5,8 +6,11 @@ var fruits = [
     'pineapple',
     'tomato'
 ]
+
+// Render buttons to page.
 render();
 
+// Button in form to create new option and push it into the array.
 $(".btn").click(function () {
     event.preventDefault();
     var newFruit = $('.form-control').val();
@@ -15,6 +19,7 @@ $(".btn").click(function () {
     render();
 })
 
+// Render function which creates buttons from the array variable and assigns attributes and class to button.
 function render () {
     for (var i = 0; i < fruits.length; i++) {
         var button = $("<button>");
@@ -23,21 +28,28 @@ function render () {
         button.addClass("run-api")
         $("#buttons-here").append(button);
     }
+    // Gives the button the request from API functionality
     connection();
+    // Clears button text after push
     $('#InputFruit').val('');
 }
 
+// Connection to API function. 
 function connection() {
     $(".run-api").click( function() {
+        // Renders a new set of images
         $('#giphy-here').empty();
+        // This allows a visible display for the user to know what he has clicked
         $(".run-api").attr("style", "background: #3CB371")
         $(this).attr("style", "background: #2E8B57")
-        
+
+        // API config
         var frutty = $(this).attr("data");
         var keyLock = 'ogy1PqNtCq4mqXG4hlDpZ1iDVeQJjkJI'
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             frutty + "&api_key=" + keyLock + "&limit=10";
     
+        // AJAX request
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -45,10 +57,12 @@ function connection() {
     
             var results = response.data;
     
+            // Display results
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
                 gifDiv.addClass("gifContain")
     
+                // Adding rating of Gif
                 var rating = results[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
     
@@ -66,6 +80,8 @@ function connection() {
                 $(gifDiv).prepend(p);
                 $("#giphy-here").prepend(gifDiv);
             }
+
+            // Animates gif on click and makes it still on second click
             $(".gif").on("click", function () {
             
                 var state = $(this).attr('data-state')
