@@ -1,7 +1,9 @@
+/* Body style */
 html, body {
     background: #DCDCDC;
 }
 
+/* GIF container style */
 p {
     margin-bottom: 0px;
     margin-top: 10px;
@@ -11,14 +13,15 @@ img {
     width: 100%;
 }
 
-form {
-    padding: 5px;
-}
-
 .run-api {
     margin: 5px;
     background: #3CB371;
     color: #ffffff;
+}
+
+/* Form style */
+form {
+    padding: 5px;
 }
 
 .btn {
